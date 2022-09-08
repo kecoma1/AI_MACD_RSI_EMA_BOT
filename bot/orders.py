@@ -86,7 +86,8 @@ def thread_orders_AI(stop_event, data, trading_data):
 
     # Waiting for the data to be loaded
     while data['data'] is None:
-        pass
+        if stop_event.is_set():
+            return
     
     print("[INFO]\tOrders running")
     
